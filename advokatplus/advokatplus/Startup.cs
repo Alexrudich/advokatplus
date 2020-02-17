@@ -12,6 +12,7 @@ using advokatplus.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using advokatplus.Models.Feedback;
 
 namespace advokatplus
 {
@@ -34,6 +35,20 @@ namespace advokatplus
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            EmailServerConfiguration config = new EmailServerConfiguration
+            {
+                SmtpPassword = "password",
+                SmtpServer = "smtp.mail.ru",
+                SmtpUsername = "nastya0921@mail.ru"
+            };
+            EmailAddress FromEmailAddress = new EmailAddress
+            {
+                Address = "nastya0921@mail.ru",
+                Name = "Анастасия Рудич"
+            };
+            services.AddSingleton<EmailServerConfiguration>(config);
+            services.AddTransient<IEmailService, MailKitEmailService>();
+            services.AddSingleton<EmailAddress>(FromEmailAddress);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +65,7 @@ namespace advokatplus
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

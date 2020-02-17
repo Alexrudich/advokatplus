@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using advokatplus.Models;
+using advokatplus.Models.Feedback;
 
 namespace advokatplus.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly EmailAddress FromAndToEmailAddress;
+        private IEmailService EmailService;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -42,11 +45,32 @@ namespace advokatplus.Controllers
         }
 
         [HttpGet]
-        public IActionResult Contacts()
+        public IActionResult Contact()
         {
             ViewData["Message"] = "Contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                EmailMessage msgToSend = new EmailMessage
+                {
+                    FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+                    ToAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+                    Content = $"Отправитель: {model.Contact.Name} { model.Contact.LastName}," + $" Email: {model.Contact.Email}. Сообщение: {model.Contact.Message}. Телефон: {model.Contact.PhoneNumber}",
+                    Subject = "Новое сообщение с сайта"
+                };
+                EmailService.Send(msgToSend);
+                return RedirectToAction("Contact");
+            }
+            else
+            {
+                return Contact();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
