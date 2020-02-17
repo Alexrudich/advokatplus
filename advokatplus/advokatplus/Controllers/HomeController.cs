@@ -16,9 +16,11 @@ namespace advokatplus.Controllers
         private readonly EmailAddress FromAndToEmailAddress;
         private IEmailService EmailService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(EmailAddress _fromAddress, IEmailService _emailService, ILogger<HomeController> logger)
         {
             _logger = logger;
+            FromAndToEmailAddress = _fromAddress;
+            EmailService = _emailService;
         }
 
         public IActionResult Index()
