@@ -1,0 +1,42 @@
+﻿@model advokatplus.Models.Feedback.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>Contacts</h1>
+
+<form asp-action="Contact" asp-controller="Home" class="feedback-form" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="row form-group">
+        <div class="col-md-6">
+            <input asp-for="Contact.Name" type="text" id="fname" class="form-control" placeholder="Ваше имя">
+            <span asp-validation-for="Contact.Name"></span>
+        </div>
+        <div class="col-md-6">
+            <input asp-for="Contact.LastName" type="text" id="lname" class="form-control" placeholder="Ваша фамилия">
+            <span asp-validation-for="Contact.LastName"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <input asp-for="Contact.Email" type="text" id="email" class="form-control" placeholder="Ваш email">
+            <span asp-validation-for="Contact.Email"></span>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12">
+            <input asp-for="Contact.PhoneNumber" type="text" id="subject" class="form-control" placeholder="Номер телефона">
+            <span asp-validation-for="Contact.PhoneNumber"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <textarea asp-for="Contact.Message" type="text" id="message" cols="30" rows="10" class="form-control" placeholder="Ваше сообщение"></textarea>
+            <span asp-validation-for="Contact.Message"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить сообщение" class="btn btn-primary">
+    </div>
+</form>
