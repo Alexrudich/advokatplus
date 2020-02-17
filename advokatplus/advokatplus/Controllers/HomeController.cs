@@ -23,8 +23,29 @@ namespace advokatplus.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+        [HttpGet]
+        public IActionResult Prices()
         {
+            ViewData["Message"] = "Prices page.";
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Questions()
+        {
+            ViewData["Message"] = "Questions and answers page.";
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Contacts()
+        {
+            ViewData["Message"] = "Contact page.";
+
             return View();
         }
 
