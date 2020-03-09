@@ -10,45 +10,28 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PostName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostDiscription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostContent)
-            @*</th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeStamp)
-            </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostDiscription)
-            </td>
-            <td>
-                @Html.Raw(item.PostContent)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.TimeStamp)
-            </td>*@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PostID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PostID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PostID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Post ID: @item.PostID
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.PostName</h5>
+                    <p class="card-text">
+                        @{
+                            var PostDesc = item.PostDescription;
+                            PostDesc = PostDesc.Length >= 50 ? PostDesc.Substring(0, 50) : PostDesc;
+                        }
+
+                        @PostDesc
+                    </p>
+                    <a asp-action="Details" asp-route-id="@item.PostID" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

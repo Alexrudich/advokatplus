@@ -54,7 +54,7 @@ namespace advokatplus.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostID,PostName,PostDiscription,PostContent,TimeStamp")] Post post)
+        public async Task<IActionResult> Create([Bind("PostID,PostName,PostDescription,PostContent,TimeStamp")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace advokatplus.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PostID,PostName,PostDiscription,PostContent,TimeStamp")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("PostID,PostName,PostDescription,PostContent,TimeStamp")] Post post)
         {
             if (id != post.PostID)
             {

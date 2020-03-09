@@ -53,7 +53,7 @@ namespace advokatplus.Migrations
                     PostID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PostName = table.Column<string>(nullable: true),
-                    PostDiscription = table.Column<string>(nullable: true),
+                    PostDescription = table.Column<string>(nullable: true),
                     PostContent = table.Column<string>(nullable: true),
                     TimeStamp = table.Column<DateTime>(nullable: false)
                 },

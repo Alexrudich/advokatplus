@@ -10,7 +10,7 @@ using advokatplus.Data;
 namespace advokatplus.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200309225253_Initial")]
+    [Migration("20200309234201_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -231,7 +231,7 @@ namespace advokatplus.Migrations
                     b.Property<string>("PostContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PostDiscription")
+                    b.Property<string>("PostDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostName")

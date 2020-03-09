@@ -14,11 +14,12 @@ namespace advokatplus.Models.Posts
         public string PostName { get; set; }
 
         [Display(Name = "Описание")]
-        public string PostDiscription { get; set; }
+        public string PostDescription { get; set; }
 
         [Display(Name = "Пост")]
         public string PostContent { get; set; }
 
+        [Display(Name = "Дата")]
         public DateTime TimeStamp { get; set; }
         public Post()
         {

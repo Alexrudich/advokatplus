@@ -229,7 +229,7 @@ namespace advokatplus.Migrations
                     b.Property<string>("PostContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PostDiscription")
+                    b.Property<string>("PostDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostName")
