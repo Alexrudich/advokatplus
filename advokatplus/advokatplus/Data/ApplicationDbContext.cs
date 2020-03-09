@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using advokatplus.Models.Posts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,6 @@ namespace advokatplus.Data
             : base(options)
         {
         }
+        public DbSet<Post> BlogPosts { get; set; }
     }
 }
